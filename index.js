@@ -60,6 +60,10 @@ app.get('/get_profile', function(req, res) {
 	res.send(string);
 });
 
+app.get('/', function(req, res){
+	res.send("I'M UP");
+});
+
 console.log('running')
 
 app.listen(8080);
