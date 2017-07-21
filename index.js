@@ -1,6 +1,5 @@
 require('dotenv').config();
 var express = require('express');
-var app = express();
 var path = require('path');
 const bodyParser = require('body-parser');
 const http = require('http');
@@ -21,6 +20,13 @@ const slackMessages = slackInteractiveMessages.createMessageAdapter(process.env.
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// Authorized user
+let authID;
+// User:channel storage
+let users = [];
+// Server port
+const PORT = process.env.PORT || 4390;
 
 // Server endpoints for Slack
 app.use('/slack/events', slackEvents.expressMiddleware());
